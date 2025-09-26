@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char** argv) {
+	int Espresso=80;
+	int *ptrE;
+	ptrE= &Espresso;
+	int latte= 200;
+	int *ptrL;
+	ptrL= &latte;
+	int cappuccino =350;
+	int *ptrCa;
+	ptrCa= &cappuccino;
+	int EQ;
+	int *ptrQ;
+	ptrQ= &EQ;
+	int LQ;
+	int *ptrLQ;
+	ptrLQ=&LQ;
+	int QC=0;
+	int*ptrQC;
+	ptrQC= &QC;
+	
+	int total=0;
+	int *ptrTotal;
+	ptrTotal= &total;
+	
+	
+	cout<<"enter the quantity for Espresso: ";
+	cin>>EQ;
+	cout<<"Enter The Quantity For Latte: ";
+	cin>>LQ;
+	cout<<"Enter the quantity for Cappuccino: ";
+	cin>>QC;
+	
+	cout<<"------CAFE  BILL------"<<endl;
+	cout<<"The total of Espresso: "<<(ptrE)*ptrQ;
+	
+	cout<<"Your Total Amount is: "ptrTotal;
+	return 0;
+}
