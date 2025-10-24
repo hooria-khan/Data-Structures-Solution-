@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node* next;
+};
+Node* head = NULL;
+
+void insertAtPos(int position, int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    newNode->next = NULL;
+
+    // If inserting at the start
+    if (position == 1) {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    int count = 1;
+
+    // Move to (position - 1)th node
+    while (temp != NULL && count < position - 1) {
+        temp = temp->next;
+        count++;
+    }
+
+    // If position is invalid
+    if (temp == NULL) {
+        cout << "Invalid position!" << endl;
+        delete newNode;
+        return;
+    }
+
+    // Insert the new node
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+void display() {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    insertAtPos(1, 10);
+    insertAtPos(2, 20);
+    insertAtPos(3, 30);
+    insertAtPos(4, 40);
+    insertAtPos(5, 50);
+
+    cout << "Linked list: ";
+    display();
+
+    return 0;
+}
