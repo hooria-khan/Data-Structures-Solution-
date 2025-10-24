@@ -1,0 +1,46 @@
+#include <iostream>
+#include <iomanip> // for setw and formatting
+using namespace std;
+
+struct Node {
+    Node* prev;
+    int data;
+    Node* next;
+};
+
+void DisplayNode(Node* node) {
+    cout << "------------------------------------------------------\n";
+    cout << setw(20) << "Prev Address"
+         << "  |  " << setw(6) << "Data"
+         << "  |  " << setw(15) << "Next Address"
+         << "  |  " << setw(15) << "Node Address" << endl;
+    cout << "------------------------------------------------------\n";
+
+    if (node == NULL) {
+        cout << "                 (NULL node)\n";
+    } else {
+        cout << "  " << setw(18) << node->prev
+             << "  |  " << setw(6) << node->data
+             << "  |  " << setw(15) << node->next
+             << "  |  " << setw(15) << node << endl;
+    }
+
+    cout << "------------------------------------------------------\n";
+}
+int main() {
+    Node* first = new Node();
+    Node* second = new Node();
+
+    first->prev = NULL;
+    first->data = 25;
+    first->next = second;
+
+    second->prev = first;
+    second->data = 50;
+    second->next = NULL;
+
+    // Display only first node
+    DisplayNode(first);
+
+    return 0;
+}
