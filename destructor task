@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node *next;
+    node*prev;
+    
+    node(int val)
+    {
+        data=val;
+        next=nullptr;
+        prev=nullptr;
+    }
+};
+
+class doublyLinkedList{
+    private:
+    node *head;
+    node *tail;
+    public:
+    
+    doublyLinkedList()
+    {
+        head=nullptr;
+        tail=nullptr;
+    }
+    void insert(int val)
+    {
+        node *newNode=new node(val);
+        if(!head)
+        {
+             head=tail=newNode;
+        }
+        else
+        {
+            tail->next=newNode;
+            newNode->prev=tail;
+            tail=newNode;
+        }
+    }
+    void display()
+    {
+        if(!head)
+        {
+            cout<<"List is empty..."<<endl;
+            return;
+        }
+        cout<<"Current List:";
+        node *temp=head;
+        while(temp)
+        {
+            cout<<temp->data;
+            if(temp->next)
+            {
+                cout<<"<->";
+                temp=temp->next;
+            }
+        }
+        cout<<endl;
+    }
+    void Delete()
+    {
+        if(!head)
+        {
+            cout<<"List is already empty...";
+            return;
+        }
+        cout<<"Deleting all nodes!";
+        node *current=head;
+        while(current)
+        {
+            cout<<"Deletinf node with value:"<<current->data<<endl;
+            node *temp=current;
+            current=current->next;
+            delete temp;
+        }
+        head=nullptr;
+        tail=nullptr;
+        cout<<"All nodes deleted...";
+    }
+};
+
+
+int main() {
+    doublyLinkedList list;
+    list.insert(10);
+    list.insert(20);
+    list.insert(30);
+    list.insert(40);
+    list.insert(50);
+    list.display();
+    list.Delete();
+    
+
+    return 0;
+}
